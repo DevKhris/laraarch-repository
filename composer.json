@@ -1,17 +1,12 @@
 {
     "name": "devkhris/laravel-repository",
     "description": "Package to implement the repository pattern into Laravel",
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "DevKhris\\LaravelRepository\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "Khris",
             "email": "contact@devkhris.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {}
 }

@@ -64,8 +64,9 @@ class RepositoryMakeCommand extends Command
 
     public function getModelsInstance()
     {
-        return App::
+        return $this->getSingularClassName($this->argument('model_name'))::class;
     }
+
     /**
     * Return the stub repository file path
     *
@@ -92,7 +93,8 @@ class RepositoryMakeCommand extends Command
             'REPOSITORIES_NAMESPACE' => config('repositories_namespace', ''),
             'CONTRACTS_NAMESPACE' => config('contracts_namespace', ''),
             'CLASS_NAME' => $this->getSingularClassName($this->argument('model_name')),
-            'INTERFACE_NAME' => $this->getSingularClassName($this->argument('model_name'))
+            'INTERFACE_NAME' => $this->getSingularClassName($this->argument('model_name')),
+            'MODEL_NAME' => $this->getModelsInstance()
         ]
     }
 
@@ -140,8 +142,8 @@ class RepositoryMakeCommand extends Command
     */
     public function getSourceFilesPaths()
     {
-        $repositoryPath = config('repositories_namespace', '');
-        $interfacePath = config('contracts_namespace', '');
+        $repositoryPath = config('repositories_namespace', '', 'App\Repositories\Models');
+        $interfacePath = config('contracts_namespace', '', 'App\Repositories\Contracts');
 
         $realRepositoryPath = base_path($repositoryPath .'\\' .$this->getSingularClassName($this->argument('model_name')) . 'Repository.php');
         $realInterfacePath = base_path($interfacePath .'\\' .$this->getSingularClassName($this->argument('model_name')) . 'Interface.php');
