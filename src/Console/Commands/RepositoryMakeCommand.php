@@ -1,11 +1,12 @@
 <?php
-
+/**
+ * Make repository from model with command
+ */
 namespace DevKhris\LaravelRepository\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Pluralizer;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\App;
 
 class RepositoryMakeCommand extends Command
 {
@@ -31,7 +32,7 @@ class RepositoryMakeCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'repository:make {model_name}';
+    protected $signature = 'make:repository {model_name}';
 
     /**
      * The console command description.
@@ -64,7 +65,7 @@ class RepositoryMakeCommand extends Command
 
     public function getModelsInstance()
     {
-        return $this->getSingularClassName($this->argument('model_name'))::class;
+        return 'App\\Models\\' . $this->getSingularClassName($this->argument('model_name'));
     }
 
     /**
@@ -90,12 +91,13 @@ class RepositoryMakeCommand extends Command
     public function getStubVariables()
     {
         return [
-            'REPOSITORIES_NAMESPACE' => config('repositories_namespace', ''),
-            'CONTRACTS_NAMESPACE' => config('contracts_namespace', ''),
+            'REPOSITORIES_NAMESPACE' => config('repositories_namespace', 'App\Repositories\Models'),
+            'CONTRACTS_NAMESPACE' => config('contracts_namespace', 'App\Repositories\Contracts'),
             'CLASS_NAME' => $this->getSingularClassName($this->argument('model_name')),
             'INTERFACE_NAME' => $this->getSingularClassName($this->argument('model_name')),
-            'MODEL_NAME' => $this->getModelsInstance()
-        ]
+            'MODEL_NAMESPACE' => $this->getModelsInstance(),
+            'MODEL_NAME' => $this->getSingularClassName($this->argument('model_name')),
+        ];
     }
 
     /**
@@ -110,8 +112,8 @@ class RepositoryMakeCommand extends Command
         $repositoryStub = $this->getStubContents($this->getRepositoryStubPath(), $stubVars);
         $interfaceStub = $this->getStubContents($this->getInterfaceStubPath(), $stubVars);
         return [
-            repositoryStub => $repositoryStub,
-            interfaceStub => $interfaceStub
+            'repositoryStub' => $repositoryStub,
+            'interfaceStub' => $interfaceStub
         ];
     }
 
@@ -142,15 +144,15 @@ class RepositoryMakeCommand extends Command
     */
     public function getSourceFilesPaths()
     {
-        $repositoryPath = config('repositories_namespace', '', 'App\Repositories\Models');
-        $interfacePath = config('contracts_namespace', '', 'App\Repositories\Contracts');
+        $repositoryPath = config('repositories_namespace', 'App\Repositories\Models');
+        $interfacePath = config('contracts_namespace', 'App\Repositories\Contracts');
 
         $realRepositoryPath = base_path($repositoryPath .'\\' .$this->getSingularClassName($this->argument('model_name')) . 'Repository.php');
-        $realInterfacePath = base_path($interfacePath .'\\' .$this->getSingularClassName($this->argument('model_name')) . 'Interface.php');
+        $realInterfacePath = base_path($interfacePath .'\\' .$this->getSingularClassName($this->argument('model_name')) . 'RepositoryInterface.php');
 
         return [
-            repositoryPath => $realRepositoryPath,
-            interfacePath => $realInterfacePath
+            'repositoryPath' => $realRepositoryPath,
+            'interfacePath' => $realInterfacePath
         ];
     }
 
@@ -183,17 +185,18 @@ class RepositoryMakeCommand extends Command
         $contents = $this->getSourceFiles();
 
         // Make correspondent dirs
-        $this->makePath(dirname($path['repositoryPath']));
+        $this->makePath(dirname($paths['repositoryPath']));
         $this->makePath(dirname($paths['interfacePath']));
 
         // Check if file exists
         if (!$this->fs->exists($paths['repositoryPath']) && !$this->fs->exists($paths['interfacePath'])) {
+
             // Create repository from stub
             $this->fs->put($paths['repositoryPath'], $contents['repositoryStub']);
-            $this->info(`Repository: {$paths['repositoryPath']} succesfully created`);
+            $this->info("Repository succesfully created");
             // Create contract from stub
             $this->fs->put($paths['interfacePath'], $contents['interfaceStub']);
-            $this->info(`Contract: {$paths['interfacePath']} succesfully created`);
+            $this->info("Contract succesfully created");
             return true;
         } else {
             $this->info('Files already exists');

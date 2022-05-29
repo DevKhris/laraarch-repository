@@ -15,14 +15,14 @@ class BaseRepository implements EloquentRepositoryInterface
         $this->setModel($model);
     }
 
-    public function getModel(): void
+    public function getModel(): Model
     {
-        return $this->model
+        return $this->model;
     }
 
     public function setModel(Model $model): void
     {
-        $this->model = $model
+        $this->model = $model;
     }
 
 	public function all(array $columns = ['*'], array $relations = []): Collection

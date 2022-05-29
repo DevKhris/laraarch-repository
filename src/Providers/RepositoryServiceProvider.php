@@ -1,6 +1,6 @@
 <?php
 
-namespace DevKhris\LaravelRepository;
+namespace DevKhris\LaravelRepository\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use DevKhris\LaravelRepository\Console\Commands\RepositoryMakeCommand;
@@ -16,7 +16,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         // Merge config
         $this->mergeConfigFrom(
-            __DIR__.'/config/repository.php', 'repository'
+            __DIR__.'/../config/repository.php', 'repository'
         );
     }
 
@@ -29,7 +29,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         // Publish config
         $this->publishes([
-            __DIR__.'/config/repository.php' => config_path('repository.php'),
+            __DIR__.'/../config/repository.php' => config_path('repository.php'),
         ]);
 
         // Register command

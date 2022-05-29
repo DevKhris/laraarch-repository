@@ -12,7 +12,7 @@ interface EloquentRepositoryInterface
 	 *
 	 * @return \Illuminate\Database\Eloquent\Model
 	 */
-	public function getModel(): void;
+	public function getModel(): Model;
 
     /**
      * Set model repository
