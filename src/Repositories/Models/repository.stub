@@ -1,0 +1,14 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use DevKhris\LaravelRepository\Contracts\BaseRepository;
+use $CONTRACTS_NAMESPACE$\$INTERFACE_NAME$RepositoryInterface;
+
+class $CLAS_NAME$Repository extends BaseRepository implements $INTERFACE_NAME$RepositoryInterface
+{
+    public function setModel($MODE$ $model)
+    {
+        $this->model = $model;
+    }
+}

@@ -1,0 +1,9 @@
+<php
+
+namespace $CONTRACTS_NAMESPACE$;
+use App\Interfaces\EloquentRepositoryInterface;
+
+interface $CLASS_NAME$RepositoryInterface extends EloquentRepositoryInterface
+{
+
+}
