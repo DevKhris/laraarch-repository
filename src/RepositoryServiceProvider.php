@@ -14,7 +14,10 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // Merge config
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/repository.php', 'repository'
+        );
     }
 
     /**
@@ -24,10 +27,16 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if ($this->app->runningInConsole()) {
-        $this->commands([
-            RepositoryMakeCommand::class,
+        // Publish config
+        $this->publishes([
+            __DIR__.'/../config/repository.php' => config_path('repository.php'),
         ]);
-    }
+
+        // Register command
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                RepositoryMakeCommand::class,
+            ]);
+        }
     }
 }

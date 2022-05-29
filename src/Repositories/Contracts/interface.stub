@@ -5,5 +5,6 @@ use App\Interfaces\EloquentRepositoryInterface;
 
 interface $CLASS_NAME$RepositoryInterface extends EloquentRepositoryInterface
 {
-
+    // Implement contract functions
 }
+

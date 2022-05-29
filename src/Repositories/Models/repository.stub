@@ -1,14 +1,16 @@
 <?php
 
-namespace $NAMESPACE$;
+namespace $REPOSITORIES_NAMESPACE$;
 
 use DevKhris\LaravelRepository\Contracts\BaseRepository;
 use $CONTRACTS_NAMESPACE$\$INTERFACE_NAME$RepositoryInterface;
 
 class $CLAS_NAME$Repository extends BaseRepository implements $INTERFACE_NAME$RepositoryInterface
 {
-    public function setModel($MODE$ $model)
+    public function setModel($MODEL$ $model)
     {
         $this->model = $model;
     }
+
+     // Implement repository functions based on contract
 }
