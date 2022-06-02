@@ -1,12 +1,25 @@
 {
-    "name": "devkhris/laravel-repository",
-    "description": "Package to implement the repository pattern into Laravel",
+    "name": "devkhris/laraarch-repository",
+    "description": "Package to implement the repository design pattern into Laravel",
+    "license": "MIT",
     "authors": [
         {
-            "name": "Khris",
+            "name": "Christian Hernandez",
             "email": "contact@devkhris.com"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "DevKhris\\LaraArchRepository\\": "src/"
+        }
+    },
+
+    "extra": {
+      "laravel": {
+          "providers": [
+              "DevKhris\\LaraArchRepository\\Providers\\RepositoryServiceProvider"
+          ]
+      }
+    }
 }

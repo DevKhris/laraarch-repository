@@ -1,6 +1,6 @@
 <?php
 
-namespace DevKhris\LaravelRepository\Interfaces;
+namespace DevKhris\LaraArchRepository\Interfaces;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;

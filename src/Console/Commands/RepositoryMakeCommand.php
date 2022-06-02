@@ -2,7 +2,7 @@
 /**
  * Make repository from model with command
  */
-namespace DevKhris\LaravelRepository\Console\Commands;
+namespace DevKhris\LaraArchRepository\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Pluralizer;

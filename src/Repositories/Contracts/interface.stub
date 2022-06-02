@@ -2,7 +2,7 @@
 
 namespace $CONTRACTS_NAMESPACE$;
 
-use DevKhris\LaravelRepository\Interfaces\EloquentRepositoryInterface;
+use DevKhris\LaraArchRepository\Interfaces\EloquentRepositoryInterface;
 
 interface $CLASS_NAME$RepositoryInterface extends EloquentRepositoryInterface
 {

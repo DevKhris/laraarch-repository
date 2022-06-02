@@ -1,6 +1,6 @@
 <?php
 
-namespace DevKhris\LaravelRepository\Providers;
+namespace DevKhris\LaraArchRepository\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use DevKhris\LaravelRepository\Console\Commands\RepositoryMakeCommand;

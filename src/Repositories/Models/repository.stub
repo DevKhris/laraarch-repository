@@ -2,7 +2,7 @@
 
 namespace $REPOSITORIES_NAMESPACE$;
 
-use DevKhris\LaravelRepository\Contracts\BaseRepository;
+use DevKhris\LaraArchRepository\Contracts\BaseRepository;
 use $CONTRACTS_NAMESPACE$\$INTERFACE_NAME$RepositoryInterface;
 use $MODEL_NAMESPACE$;
 
