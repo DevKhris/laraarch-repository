@@ -3,3 +3,7 @@ LaravelRepository is a laravel package for implementation of the Repository Desi
 and want to preserve the "fat model, skinny controller" approach
 
 ## **Installation**
+
+## **Features**
+
+## **Contributing and Issues**
