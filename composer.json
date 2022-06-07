@@ -1,17 +1,16 @@
 {
     "name": "devkhris/laraarch-repository",
     "description": "Package to implement the repository design pattern into Laravel",
-    "license": "MIT",
+    "version": "0.1.0",
     "authors": [
         {
             "name": "Christian Hernandez",
             "email": "contact@devkhris.com"
         }
     ],
-    "require": {},
     "autoload": {
         "psr-4": {
-            "DevKhris\\LaraArchRepository\\": "src/"
+            "DevKhris\\LaraArchRepository\\": "src"
         }
     },
 
@@ -21,5 +20,8 @@
               "DevKhris\\LaraArchRepository\\Providers\\RepositoryServiceProvider"
           ]
       }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0"
     }
 }

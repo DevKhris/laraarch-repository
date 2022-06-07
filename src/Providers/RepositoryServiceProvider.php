@@ -3,7 +3,7 @@
 namespace DevKhris\LaraArchRepository\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use DevKhris\LaravelRepository\Console\Commands\RepositoryMakeCommand;
+use DevKhris\LaraArchRepository\Console\Commands\RepositoryMakeCommand;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -16,7 +16,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         // Merge config
         $this->mergeConfigFrom(
-            __DIR__.'/../config/repository.php', 'repository'
+            __DIR__.'/../config/laraarch-repository.php', 'laraarch-repository'
         );
     }
 
@@ -29,7 +29,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         // Publish config
         $this->publishes([
-            __DIR__.'/../config/repository.php' => config_path('repository.php'),
+            __DIR__.'/../config/laraarch-repository.php' => config_path('laraarch-repository.php'),
         ]);
 
         // Register command
