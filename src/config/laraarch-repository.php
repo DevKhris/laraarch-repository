@@ -10,5 +10,5 @@ return [
     /**
      * Namespace for the repositories contract interfaces
      */
-    'contracts_namespace' => 'App\Repositories\Contacts'
+    'contracts_namespace' => 'App\Repositories\Contracts'
 ];
