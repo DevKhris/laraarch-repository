@@ -11,7 +11,7 @@ $ composer require devkhris/laraarch-repository
 
 ### Publish config with provider
 ```bash
-$ @php artisan vendor:publish --provider="DevKhris\LaraArchRepository\Providers;\RepositoryServiceProvider" --tag="config"
+$ @php artisan vendor:publish --provider="DevKhris\LaraArchRepository\Providers\RepositoryServiceProvider" --tag="config"
 ```
 
 ## **Usage**
@@ -22,5 +22,8 @@ E.g:
 $ php artisan make:repository User
 ```
 ## **Features**
+- Fast implementation of Repositories for Models with the artisan command
+- Support for string-based identifiers (UUIDs) and integers
+- Eloquent-based
 
 ## **Contributing and Issues**
