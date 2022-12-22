@@ -5,6 +5,9 @@ namespace DevKhris\LaraArchRepository\Providers;
 use Illuminate\Support\ServiceProvider;
 use DevKhris\LaraArchRepository\Console\Commands\RepositoryMakeCommand;
 
+/**
+ * Repository Provider
+ */
 class RepositoryServiceProvider extends ServiceProvider
 {
     /**
@@ -16,7 +19,8 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         // Merge config
         $this->mergeConfigFrom(
-            __DIR__.'/../config/laraarch-repository.php', 'laraarch-repository'
+            __DIR__ . '/../config/laraarch-repository.php',
+            'laraarch-repository'
         );
     }
 
@@ -28,15 +32,19 @@ class RepositoryServiceProvider extends ServiceProvider
     public function boot()
     {
         // Publish config
-        $this->publishes([
-            __DIR__.'/../config/laraarch-repository.php' => config_path('laraarch-repository.php'),
-        ]);
+        $this->publishes(
+            [
+                __DIR__ . '/../config/laraarch-repository.php' => config_path('laraarch-repository.php'),
+            ]
+        );
 
         // Register command
         if ($this->app->runningInConsole()) {
-            $this->commands([
-                RepositoryMakeCommand::class,
-            ]);
+            $this->commands(
+                [
+                    RepositoryMakeCommand::class,
+                ]
+            );
         }
     }
 }
